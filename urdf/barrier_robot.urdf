@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<robot name="barrier">
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="1.0 0.5 1.5" />
+      </geometry>
+      <origin rpy="0 0 0" xyz="0 0 0.75"/>
+    </visual>
+  </link>
+
+  <link name="shaft_link">
+    <visual>
+      <geometry>
+        <cylinder length="0.1" radius="0.25"/>
+      </geometry>
+      <!-- <origin rpy="1.57075 0 0" xyz="0 0.3 1.25"/> -->
+    </visual>
+  </link>
+
+  <link name="bar_link">
+    <visual>
+      <geometry>
+        <box size="3.0 0.1 0.25" />
+      </geometry>
+      <origin rpy="1.57075 0 0" xyz="1.5 0 0"/>
+    </visual>
+  </link>
+
+  <joint name="base_to_shaft_link" type="fixed">
+    <parent link="base_link"/>
+    <child link="shaft_link"/>
+    <origin rpy="1.57075 0 0" xyz="0 0.3 1.25"/>
+  </joint>
+
+  <joint name="shaft_to_bar_link" type="revolute">
+    <parent link="shaft_link"/>
+    <child link="bar_link"/>
+    <axis xyz="0.0 0.0 1.0"/>
+    <limit effort="30" velocity="1.0" lower="0" upper="1.42" />
+  </joint>
+
+</robot>
