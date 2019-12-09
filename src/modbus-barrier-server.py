@@ -64,7 +64,7 @@ class RosPublisher:
                     state.header.stamp = rospy.Time.now()
                     pub.publish(state)
             else:
-                if pos > 0.0:
+                if pos > 0.1:
                     pos -= 0.1
 
                     state.position = [pos]
